@@ -1,28 +1,72 @@
 def ask_user
-  puts '
-  Please select your conversion
+  puts "
+  Please select your initial temerature you are converting from:
+   a. Fahrenheit
+   b. Celsius
+   c. Kelvin
+   d. Rankine
 
-  a. Fahrenheit => Celsius
-  b. Celsius => Fahrenheit
+   "
+   choice = gets.chomp
 
-  '
-  choice = gets.chomp
-  puts "Please enter the degrees you would like to convert: "
-  degrees = gets.chomp.to_i
+   puts "How many degrees would you like to convert: "
+   degrees = gets.to_i
 
-  choice == "a"? far_to_cel(degrees_) : cel_to_far(degrees)
+   if choice == "a"
+    far(degrees)
+   elsif choice == "b"
+    cel(degrees)
+   elsif choice == "c"
+    kel(degrees)
+   elsif choice == "d"
+    ran(degrees)
+   end
+
 end
 
-def far_to_cel(deg)
-  cel = (((deg - 32.00) * 5) / 9)
-  cel = cel.round(2)
-  p "#{deg} degrees Fahrenheit is equal to #{cel} degrees Celsius"
+def far(deg)
+  cel = (deg - 32) * 5 / 9
+  kel = (deg + 459.67) * 5 / 9
+  ran = deg + 459.67
+  far = deg
+  far_n = "Fahrenheit"
+  output(deg,far_n,cel,kel,ran,far)
 end
 
-def cel_to_far(deg)
-  far = (((deg * 9.00) / 5) + 32)
-  far = far.round(2)
-  p "#{deg} degrees Celsius is equal to #{far} degrees Fahrenheit"
+def cel(deg)
+  kel = deg + 273.15
+  ran = (deg + 273.15) * 9/5
+  far =  deg *  9 / 5 + 32
+  cel = deg
+  cel_n = "Celsius"
+  output(deg,cel_n,cel,kel,ran,far)
+end
+
+def kel(deg)
+  ran = deg * 9 / 5
+  far = deg * 9 / 5 - 459.67
+  cel = deg - 273.15
+  kel = deg
+  kel_n = "Kelvin"
+  output(deg, kel_n,cel,kel,ran,far)
+end
+
+def ran(deg)
+  far = deg - 459.67
+  cel =  (deg - 491.67) * 5 / 9
+  kel = deg * 5 / 9
+  ran = deg
+  ran_n = "Rankine"
+  output(deg,ran_n,cel,kel,ran,far)
+end
+
+def output(initial_temp, initial_unit, cel, kel, ran, far)
+  p "#{initial_temp} degrees #{initial_unit} converts to"
+  p "######################################################"
+  p "#{cel} degrees Celsius"
+  p "#{kel} degrees Kelvin"
+  p "#{ran} degrees Rankine"
+  p "#{far} degrees Fahrenheit"
 end
 
 ask_user
