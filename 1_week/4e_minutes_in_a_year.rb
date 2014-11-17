@@ -8,3 +8,4 @@ def mins_a_year
 end
 
 mins_a_year
+
