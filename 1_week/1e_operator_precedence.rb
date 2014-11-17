@@ -1,26 +1,7 @@
+#At first I thought that line 4 would return true; because thats what I thought or did. However looking at the examples below it I took a wild guess at line 4 being false because I thought maybe the variable x gets set directly to y, and or z was ignored.
 
-def my_string
-  'Hello World' 
-end
- 
-puts my_string
-my_string = 'Hello Ruby World'
+#The first time around I thought line 6 would return true because I thought ( false = false ) would be true, and then true or true == true. However what I think is actually happening is that x is being assigned the value of false, ( x = false ) exactly like the first example.
 
-puts my_string
+#Line 8 I thought would evaluate to true because x is set to either (false or true) this is how I originally thought that or worked.
 
-
-# Not sure if its just me but both of those links direct to a lot of nonsensical html.
-
-# With regards to this exercise. The reason I think the variable gets executed and not the method is as follows.
-
-# The interpreter starts on line 1 and it assgins the variable my_string = "Hello Ruby World" then it continues 
-# on to the method my_string. However the interpreter will not enter a method unless its called upon, so it moves on. Once it 
-# hits my_string it prints the "Hello Ruby World" because thats what my_string has been assigned to.
-
-# The reason I think this is what is happening is because if you take the code from line 1, move it to line 8, and
-# keep everything else the same the program will enter the method and will return "Hello World". 
-
-# This is because the interpreter will first see the method, but won't enter because it hasn't been called, move on to 
-# line 6 which will then call the method, after the method has been called it will move on to line 7 which will reassign 
-# the my_string from the method to the string "Hello Ruby World" then the program will exit. 
-# You can confirm all of this by running the code attached.
+#After being baffled the first time around I looked up the difference between "or" and ||. The difference is the precedence, what do you know. The = sign has precedence over "or" however the || has precedence over the = sign. So on line 3 x is assigned to y first because = has precedence over "or". Line 5 the parens make this more clear, so lines 3 and 5 are identical. Line 7 is how the || works because || has precedence over =
