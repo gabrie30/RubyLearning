@@ -6,7 +6,7 @@ def seconds_converted(seconds)
 	remaining_minutes = minutes % 60
 	hours = minutes / 60
 	remaining_hours = hours % 24 # know: 1 % 24 = 1
-	days = hours / 24						 # now: days = 1 / 24 => 0 ; this continues
+	days = hours / 24	     # now: days = 1 / 24 => 0 ; this continues
 	remaining_days = days % 365 
 	years = days / 365
 	remaining_years = years % 365
