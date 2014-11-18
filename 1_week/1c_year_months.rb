@@ -1,17 +1,19 @@
-def seconds_to_years(seconds)
-  minutes = seconds / 60.000
-  hours = minutes / 60
-  days = hours / 24
-  years = days / 365
-  months_remaining = (years - years.floor) * 12
-  weeks_remaining = (months_remaining - months_remaining.floor) * 4
-  days_remaining = (weeks_remaining - weeks_remaining.floor) * 7
-  hours_remaining = (days_remaining - days_remaining.floor) * 24
-  minutes_remaining = (hours_remaining - hours_remaining.floor) * 60
-  seconds_remaining = (minutes_remaining - minutes_remaining.floor) * 60
-  
-  p "I'm #{years.floor} years #{months_remaining.floor} months #{weeks_remaining.floor} weeks #{days_remaining.floor} days #{hours_remaining.floor} hours #{minutes_remaining.floor} minutes #{seconds_remaining.floor} seconds old"
+#this will take seconds and convert it to years, days, hours, minutes, seconds
+
+def seconds_converted(seconds)
+	remaining_seconds = seconds % 60
+	minutes = seconds / 60
+	remaining_minutes = minutes % 60
+	hours = minutes / 60
+	remaining_hours = hours % 24 # know: 1 % 24 = 1
+	days = hours / 24						 # now: days = 1 / 24 => 0 ; this continues
+	remaining_days = days % 365 
+	years = days / 365
+	remaining_years = years % 365
+
+puts "#{seconds} seconds is equal to #{remaining_years} years, #{remaining_days} days, #{remaining_hours} hours #{remaining_minutes} minutes #{remaining_seconds} seconds}"
 end
+seconds_converted(3600) 
  
 seconds_to_years(979000000)
 seconds_to_years(2158493738)
