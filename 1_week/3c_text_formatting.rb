@@ -1,6 +1,6 @@
-# doctest:Should create a multiplcation table of from 1 to 3 
-# >> multiplication_table 5 
-# => "1 2 3 \n 2 4 6 \n 3 6 9" 
+# doctest:Should create a multiplcation table of from 1 to 3
+# >> multiplication_table 5
+# => "1 2 3 \n 2 4 6 \n 3 6 9"
 
 def multiplication_table(n)
   i = 1
@@ -15,7 +15,7 @@ def multiplication_table(n)
         smaller_table << format_1_space
       else
       smaller_table << i*j
-      end 
+      end
       j += 1
     end
     larger_table << smaller_table
@@ -24,4 +24,4 @@ def multiplication_table(n)
   larger_table
 end
 
-multiplication_table(5) 
+multiplication_table(5)
