@@ -1,6 +1,6 @@
 # The format for "%05d" % 123 is :
 # % [flags] [width] [.precision] type
-
+#
 # "%05d" % 123
 
 # you use the second % as a shortcut to sprintf "%05d" ,123 in other words (sprintf "%05d" ,123 == "%05d" % 123)
