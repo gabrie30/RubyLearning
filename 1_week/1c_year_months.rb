@@ -43,15 +43,16 @@ end
 # doctest: seconds_converted_to_years_months
 # >> seconds_converted_to_years_months(60 * 60 * 24 * 365)
 # => [1, 0]
-# rubydoctest: seconds_converted_to_years_months
+# doctest: seconds_converted_to_years_months
 # >> seconds_converted_to_years_months(60 * 60 * 24 * 365 * 2)
 # => [2, 0]
-# rubydoctest: seconds_converted_to_years_months
+# doctest: seconds_converted_to_years_months
 # >> seconds_converted_to_years_months(60 * 60 * 24 * 365 * 2.5)
 # => [2, 6]
-# rubydoctest: seconds_converted_to_years_months
+# doctest: seconds_converted_to_years_months
 # >> seconds_converted_to_years_months(60 * 60 * 24 * 365 * 3.15)
 # => [3, 1]
+#
 def seconds_converted_to_years_months(seconds)
   years = days_to_years(hours_to_days(minutes_to_hours(
     seconds_to_minutes(seconds))))
