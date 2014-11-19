@@ -1,117 +1,100 @@
-def ask_user
-  puts %Q{Please select your initial temperature you are converting from:
-     a. Fahrenheit
-     b. Celsius
-     c. Kelvin
-     d. Rankine}
-
-  choice = gets.chomp.downcase
-
-  puts "How many degrees would you like to convert: "
-  degrees = gets.to_i
-
-  puts %Q{What would you like to convert into?
-     a. Fahrenheit
-     b. Celsius
-     c. Kelvin
-     d. Rankine}
-
-  convert_to = gets.chomp.downcase
-
-# you will enter the function of the initial unit to solve for the desired answer
-# for example if a user wants to convert Kelvin 'kel' to Celsius 'cel' -- you will enter the kel method
-
-   if convert_to == "a"
-    converting_to = "Fahrenheit"
-   elsif convert_to == "b"
-    converting_to = "Celsius"
-   elsif convert_to == "c"
-    converting_to = "Kelvin"
-   elsif convert_to == "d"
-    converting_to = "Rankine"
-   else
-      puts "That's not an option try again"
-   end
-
-  if choice == "a"
-    initial_unit = "Fahrenheit"
-    far(degrees,converting_to,initial_unit)
-    output(degrees,initial_unit, converting_to, far(degrees,converting_to,initial_unit))
-  elsif choice == "b"
-    initial_unit = "Celsius"
-    cel(degrees,converting_to,initial_unit)
-    output(degrees,initial_unit, converting_to, cel(degrees,converting_to,initial_unit))
-  elsif choice == "c"
-    initial_unit = "Kelvin"
-    kel(degrees,converting_to,initial_unit)
-    output(degrees,initial_unit, converting_to, kel(degrees,converting_to,initial_unit))
-  elsif choice == "d"
-    initial_unit = "Rankine"
-    ran(degrees,converting_to,initial_unit)
-    output(degrees,initial_unit, converting_to, ran(degrees,converting_to,initial_unit))
+# doctest: if ask_user returns a converting_to should equal Fahrenheit...etc
+# >> %w(a b c d e).collect { |code| conversion_selector(code) }
+# => ["Fahrenheit", "Celsius", "Kelvin", "Rankine", false]
+def conversion_selector(code_letter)
+  case code_letter
+  when 'a'
+    'Fahrenheit'
+  when 'b'
+    'Celsius'
+  when 'c'
+    'Kelvin'
+  when 'd'
+    'Rankine'
   else
-    puts "That's not an option try again"
+    false
   end
+end
+UNITS = {'farhrenheit' => 'Fahrenheit', 'celsius' => "Celsius", "kelvin" => "Kelvin", "rankine" => "Rankine"}
+def prompt(message, with_chomp: true)
+  puts message
+  response = gets
+  with_chomp ? response.chomp : response
+end
+
+def menu(to_or_from)
+  %(Please select your initial temperature you are converting %s:
+     a. Fahrenheit
+     b. Celsius
+     c. Kelvin
+     d. Rankine) % to_or_from
+end
+def process_temps
+
+  ran(degrees, convert_to, initial_unit)
 end
 
 # I could make the function calls more DRY, because the last argument is the only one that changes,
 # however I would still need to create another variable for each if/else so I left it like it is
 # will think about how I can solve this problem
 
-def far(deg,converting_to,initial_unit)
-  if converting_to == "Celsius"
-    answer = (deg - 32) * 5 / 9
-  elsif converting_to == "Kelvin"
-    answer = (deg + 459.67) * 5 / 9
-  elsif converting_to == "Rankine"
-    answer = deg + 459.67
-  elsif converting_to == "Fahrenheit"  
-    answer = deg
+# doctest: The API is call the unit name that you want to convert from, and send it degrees and convert_to_unit
+# >> fahrenheit -40, 'Celsius'
+# => -40
+def fahrenheit(deg, convert_to)
+  if convert_to == 'Celsius'
+    (deg - 32) * 5 / 9
+  elsif convert_to == 'Kelvin'
+    (deg + 459.67) * 5 / 9
+  elsif convert_to == 'Rankine'
+    deg + 459.67
+  elsif convert_to == 'Fahrenheit'
+    deg
   end
-  answer
 end
 
-def cel(deg,converting_to,initial_unit)
-  if converting_to == "Kelvin"
-    answer = deg + 273.15
-  elsif converting_to == "Rankine"
-    answer = (deg + 273.15) * 9/5
-  elsif converting_to == "Fahrenheit" 
-    answer =  deg *  9 / 5 + 32
-  elsif converting_to == "Celsius"
-    answer = deg
+def celsius(deg, convert_to)
+  if convert_to == 'Kelvin'
+    deg + 273.15
+  elsif convert_to == 'Rankine'
+    (deg + 273.15) * 9 / 5
+  elsif convert_to == 'Fahrenheit'
+    deg *  9 / 5 + 32
+  elsif convert_to == 'Celsius'
+    deg
   end
-  answer
 end
 
-def kel(deg,converting_to,initial_unit)
-  if converting_to == "Rankine"
-    answer = deg * 9 / 5
-  elsif converting_to == "Fahrenheit"
-    answer = deg * 9 / 5 - 459.67
-  elsif converting_to == "Celsius"
-    answer = deg - 273.15
-  elsif converting_to == "Kelvin"
-    answer = deg
+def kelvin(deg, convert_to)
+  if convert_to == 'Rankine'
+    deg * 9 / 5
+  elsif convert_to == 'Fahrenheit'
+    deg * 9 / 5 - 459.67
+  elsif convert_to == 'Celsius'
+    deg - 273.15
+  elsif convert_to == 'Kelvin'
+    deg
   end
-  answer
 end
 
-def ran(deg,converting_to,initial_unit)
-  if converting_to == "Fahrenheit"
-    answer = deg - 459.67
-  elsif converting_to == "Celsius"
-    answer =  (deg - 491.67) * 5 / 9
-  elsif converting_to == "Kelvin"  
-    answer = deg * 5 / 9
-  elsif converting_to == "Rankine"
-    answer = deg
+def rankine(deg, convert_to)
+  if convert_to == 'Fahrenheit'
+    deg - 459.67
+  elsif convert_to == 'Celsius'
+    (deg - 491.67) * 5 / 9
+  elsif convert_to == 'Kelvin'
+    deg * 5 / 9
+  elsif convert_to == 'Rankine'
+    deg
   end
-  answer
 end
 
-def output(deg, initial_unit, converting_to, answer)
- puts "#{deg} degrees #{initial_unit} converts to #{answer} degrees #{converting_to}"
-end
 
-ask_user
+def report(deg, initial_unit, convert_to, answer)
+  "#{deg} degrees #{initial_unit} converts to #{answer} degrees #{convert_to}"
+end
+if __FILE__ == $PROGRAM_NAME
+  answers = [prompt("How many degrees? "), conversion_selector(prompt(menu('from'))), conversion_selector(prompt(menu('to')))]
+  p "Here are your answers: #{answers}"
+  puts send(answers[1].downcase, answers[0].to_f, answers[2])
+end
