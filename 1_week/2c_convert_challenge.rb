@@ -36,19 +36,22 @@ def ask_user
   if choice == "a"
     initial_unit = "Fahrenheit"
     far(degrees,converting_to,initial_unit)
+    output(degrees,initial_unit, converting_to, far(degrees,converting_to,initial_unit))
   elsif choice == "b"
     initial_unit = "Celsius"
     cel(degrees,converting_to,initial_unit)
+    output(degrees,initial_unit, converting_to, cel(degrees,converting_to,initial_unit))
   elsif choice == "c"
     initial_unit = "Kelvin"
     kel(degrees,converting_to,initial_unit)
+    output(degrees,initial_unit, converting_to, kel(degrees,converting_to,initial_unit))
   elsif choice == "d"
     initial_unit = "Rankine"
     ran(degrees,converting_to,initial_unit)
+    output(degrees,initial_unit, converting_to, ran(degrees,converting_to,initial_unit))
   else
     puts "That's not an option try again"
   end
-
 end
 
 # I could make the function calls more DRY, because the last argument is the only one that changes,
@@ -57,66 +60,54 @@ end
 
 def far(deg,converting_to,initial_unit)
   if converting_to == "Celsius"
-    cel = (deg - 32) * 5 / 9
-    output(deg,initial_unit, converting_to, cel)
+    answer = (deg - 32) * 5 / 9
   elsif converting_to == "Kelvin"
-    kel = (deg + 459.67) * 5 / 9
-    output(deg,initial_unit, converting_to, kel)
+    answer = (deg + 459.67) * 5 / 9
   elsif converting_to == "Rankine"
-    ran = deg + 459.67
-    output(deg,initial_unit, converting_to, ran)
+    answer = deg + 459.67
   elsif converting_to == "Fahrenheit"  
-    far = deg
-    output(deg,initial_unit, converting_to, far)
+    answer = deg
   end
+  answer
 end
 
 def cel(deg,converting_to,initial_unit)
   if converting_to == "Kelvin"
-    kel = deg + 273.15
-    output(deg,initial_unit, converting_to, kel)
+    answer = deg + 273.15
   elsif converting_to == "Rankine"
-    ran = (deg + 273.15) * 9/5
-    output(deg,initial_unit, converting_to, ran)
+    answer = (deg + 273.15) * 9/5
   elsif converting_to == "Fahrenheit" 
-    far =  deg *  9 / 5 + 32
-    output(deg,initial_unit, converting_to, far)
+    answer =  deg *  9 / 5 + 32
   elsif converting_to == "Celsius"
-    cel = deg
-    output(deg,initial_unit, converting_to, cel)
+    answer = deg
   end
+  answer
 end
 
 def kel(deg,converting_to,initial_unit)
   if converting_to == "Rankine"
-    ran = deg * 9 / 5
-    output(deg,initial_unit, converting_to, ran)
+    answer = deg * 9 / 5
   elsif converting_to == "Fahrenheit"
-    far = deg * 9 / 5 - 459.67
-    output(deg,initial_unit, converting_to, far)
+    answer = deg * 9 / 5 - 459.67
   elsif converting_to == "Celsius"
-    cel = deg - 273.15
-    output(deg,initial_unit, converting_to, cel)
+    answer = deg - 273.15
   elsif converting_to == "Kelvin"
-    kel = deg
-    output(deg,initial_unit, converting_to, kel)
+    answer = deg
   end
+  answer
 end
 
 def ran(deg,converting_to,initial_unit)
   if converting_to == "Fahrenheit"
-    far = deg - 459.67
-    output(deg,initial_unit, converting_to, far)
+    answer = deg - 459.67
   elsif converting_to == "Celsius"
-    cel =  (deg - 491.67) * 5 / 9
-    output(deg,initial_unit, converting_to, cel)
+    answer =  (deg - 491.67) * 5 / 9
   elsif converting_to == "Kelvin"  
-    kel = deg * 5 / 9
-    output(deg,initial_unit, converting_to, kel)
+    answer = deg * 5 / 9
   elsif converting_to == "Rankine"
-    ran = deg
-    output(deg,initial_unit, converting_to, ran)
+    answer = deg
   end
+  answer
 end
 
 def output(deg, initial_unit, converting_to, answer)
