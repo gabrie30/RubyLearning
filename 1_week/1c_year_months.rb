@@ -40,36 +40,36 @@ end
 
 # Takes an argument in seconds, and returns an 2 element array, the first
 # (index 0) being year, the seconds being months.
-# doctest: seconds_converted_to_years_months
-# >> seconds_converted_to_years_months(60 * 60 * 24 * 365)
+# doctest: seconds_to_years_and_months
+# >> seconds_to_years_and_months(60 * 60 * 24 * 365)
 # => [1, 0]
-# doctest: seconds_converted_to_years_months
-# >> seconds_converted_to_years_months(60 * 60 * 24 * 365 * 2)
+# doctest: seconds_to_years_and_months
+# >> seconds_to_years_and_months(60 * 60 * 24 * 365 * 2)
 # => [2, 0]
-# doctest: seconds_converted_to_years_months
-# >> seconds_converted_to_years_months(60 * 60 * 24 * 365 * 2.5)
+# doctest: seconds_to_years_and_months
+# >> seconds_to_years_and_months(60 * 60 * 24 * 365 * 2.5)
 # => [2, 6]
-# doctest: seconds_converted_to_years_months
-# >> seconds_converted_to_years_months(60 * 60 * 24 * 365 * 3.15)
+# doctest: seconds_to_years_and_months
+# >> seconds_to_years_and_months(60 * 60 * 24 * 365 * 3.15)
 # => [3, 1]
-#
-def seconds_converted_to_years_months(seconds)
+# doctest: Bug found, when given a partial month of seconds and it is a float,
+#          it works, but not when it is an integer of the samve value
+# >> seconds_to_years_and_months(115421760)
+# => [3, 7]
+def seconds_to_years_and_months(seconds)
   years = days_to_years(hours_to_days(minutes_to_hours(
-    seconds_to_minutes(seconds))))
+    seconds_to_minutes(seconds.to_f))))
   months = years % 1 * 12
   [years.floor, months.floor]
 end
 
 if __FILE__ == $PROGRAM_NAME
   seconds = 979_000_000
-  remaining_years, remaining_months = seconds_converted_to_years_months(seconds)
+  remaining_years, remaining_months = seconds_to_years_and_months(seconds)
   puts "#{seconds} is #{remaining_years} years and #{remaining_months} months."
-  puts "#{seconds} seconds is equal to #{remaining_years} years, #{remaining_days} days, #{remaining_hours} hours #{remaining_minutes} minutes #{remaining_seconds} seconds}"
-  seconds_converted(3600)
-
-  seconds_to_years(979_000_000)
-  seconds_to_years(2_158_493_738)
-  seconds_to_years(246_144_023)
-  seconds_to_years(1_270_166_272)
-  seconds_to_years(1_025_600_095)
+  puts seconds_to_years_and_months(979_000_000)
+  puts seconds_to_years_and_months(2_158_493_738)
+  puts seconds_to_years_and_months(246_144_023)
+  puts seconds_to_years_and_months(1_270_166_272)
+  puts seconds_to_years_and_months(1_025_600_095)
 end
