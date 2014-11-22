@@ -1,3 +1,4 @@
+#
 s = "Welcome to the forum.\nHere you can learn Ruby.\nAlong with other members.\n"
 s = s.split("\n")
 i = 1
