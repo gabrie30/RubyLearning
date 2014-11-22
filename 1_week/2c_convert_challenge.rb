@@ -15,7 +15,7 @@ def conversion_selector(code_letter)
     false
   end
 end
-UNITS = {'farhrenheit' => 'Fahrenheit', 'celsius' => "Celsius", "kelvin" => "Kelvin", "rankine" => "Rankine"}
+
 def prompt(message, with_chomp: true)
   puts message
   response = gets
@@ -28,10 +28,6 @@ def menu(to_or_from)
      b. Celsius
      c. Kelvin
      d. Rankine) % to_or_from
-end
-def process_temps
-
-  ran(degrees, convert_to, initial_unit)
 end
 
 # I could make the function calls more DRY, because the last argument is the only one that changes,
@@ -89,10 +85,6 @@ def rankine(deg, convert_to)
   end
 end
 
-
-def report(deg, initial_unit, convert_to, answer)
-  "#{deg} degrees #{initial_unit} converts to #{answer} degrees #{convert_to}"
-end
 if __FILE__ == $PROGRAM_NAME
   answers = [prompt("How many degrees? "), conversion_selector(prompt(menu('from'))), conversion_selector(prompt(menu('to')))]
   p "Here are your answers: #{answers}"
