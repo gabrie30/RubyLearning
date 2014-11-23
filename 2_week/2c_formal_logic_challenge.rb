@@ -9,8 +9,6 @@
 # Now imagine that operator wouldn't exist, how could you easily replace it by using logic operators and exploiting short-circuiting and precedence?
 
 
-
-
 # Answer:
 # The output is represented with =>
 
