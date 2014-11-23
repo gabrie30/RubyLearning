@@ -10,7 +10,7 @@
 
 
 # Answer:
-# The output is represented with =>
+# The output is represented with =>, puts was added if you want to copy/past/run
 
 # 5 > 3 && "yeah" or "boo"
 # => yeah
