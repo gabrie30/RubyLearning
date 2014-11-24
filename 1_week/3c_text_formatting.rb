@@ -10,11 +10,9 @@ def multiplication_table(n)
     smaller_table = []
     while j <= n
       if (i*j).to_s.length == 1
-        format = (i*j).to_s
-        format_1_space = " #{format}"
-        smaller_table << format_1_space
+        smaller_table << (i*j).to_s
       else
-      smaller_table << i*j
+      smaller_table << (i*j).to_s
       end
       j += 1
     end
@@ -24,4 +22,4 @@ def multiplication_table(n)
   larger_table
 end
 
-multiplication_table(5)
+p multiplication_table(5)
