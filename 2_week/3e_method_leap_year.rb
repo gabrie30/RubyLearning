@@ -5,7 +5,7 @@
 # (1900 and 2005). Note: a century year, like 1900 and 2000, is a leap year only 
 # if it is divisible by 400.
 
-def ask_user
+def prompt
   puts "What year would you like to check as a leap year? "
   year = gets.to_i
   leap_year?(year)
@@ -23,15 +23,14 @@ def leap_year?(year)
   end
 end
 
-def calculate_mins()
+
   minutes_not_leap = ( 60*60*24*365 )
   minutes_leap = ( 60*60*24*366 )
 
-  if ask_user == true
+  if prompt == true
     puts "This is a leap year. There are #{minutes_leap} minutes in this year"
   else
     puts "This is not a leap year. There are #{minutes_not_leap} minutes in this year"
   end
-end
 
-calculate_mins
+
