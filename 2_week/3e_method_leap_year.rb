@@ -16,7 +16,7 @@ def leap_year?(year)
     puts "Please enter a year greater than zero"
   elsif year % 100 == 0 && year % 400 == 0
     return true
-  elsif year % 4 == 0
+  elsif year % 100 != 0 && year % 4 == 0
     return true
   else
     return false
@@ -28,9 +28,9 @@ def calculate_mins()
   minutes_leap = ( 60*60*24*366 )
 
   if ask_user == true
-    puts "This is a leap year. There are #{minutes_leap} in this year"
+    puts "This is a leap year. There are #{minutes_leap} minutes in this year"
   else
-    puts "This is not a leap year. There are #{minutes_not_leap} in this year"
+    puts "This is not a leap year. There are #{minutes_not_leap} minutes in this year"
   end
 end
 
