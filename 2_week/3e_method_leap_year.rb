@@ -13,7 +13,7 @@ end
 
 def leap_year?(year)
   if year <= 0
-    puts "Please enter a valid year"
+    puts "Please enter a year greater than zero"
   elsif year % 100 == 0 && year % 400 == 0
     return true
   elsif year % 4 == 0
