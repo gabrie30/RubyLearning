@@ -1,0 +1,18 @@
+# RubyLearning Specific
+text.txt
+
+# vim specific
+.*.s[a-w][a-z]
+*.un~
+Session.vim
+.netrwhist
+*~
+
+# exuberant tags file
+tags
+
+# ignore gitignore files until needed
+.gitignore
+
+# Github and Bitbucket Wiki repositories
+wiki/
