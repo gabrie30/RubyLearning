@@ -11,12 +11,21 @@ class Analyzer
     @counter_hash = Hash.new(0)
   end
 
-  def letter_count()#TODO: find work around... not sure I like this more than creating my own hash - the letter j does not appear in the text.txt so it is not visualized in the report
+  def letter_count()#TODO: find work around... not sure I like this more than creating my own hash - the letter j does not appear in the text.txt so it is not visualized in the report, wont matter for larger documentst tho
       letters_array = @lines.join(" ").gsub(/\W*/,"").split("")
       letters_array.each do |letter|
         @counter_hash[letter.downcase] += 1 
       end
       @counter_hash
+  end
+
+  def letter_count_analysis
+    total = @counter_hash.inject(0) { |total, (_, v)| total += v }
+    @counter_hash.sort.each do |letter,num|
+    print "#{letter.upcase}: #{((num/total.to_f)*100).round(2)}%  " 
+    (num/100).times{print "*"}
+    puts
+    end
   end
 
 
@@ -33,17 +42,14 @@ class Analyzer
   There are on average #{(@total_words.to_f / @total_sentences.to_f).round(2)} words per sentence
   There are on average #{(@total_sentences.to_f / @total_paragraphs.to_f).to_f.round(2)} sentences per paragraph
 
-The distribution of letters for this document. (* = 10)
+The distribution of letters for this document. (* = 100)
+
   EOF
-    @counter_hash.sort.each do |letter,number|
-      print "#{letter}: "
-      (number/10).times{print "*"}
-      puts 
-    end
+  letter_count_analysis
   end
 end
 
-file = File.open("text.txt", "r")
+file = File.open(ARGV[0], "r")
 analyse1 = Analyzer.new(file)
 
 analyse1.letter_count
