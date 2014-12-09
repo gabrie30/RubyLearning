@@ -1,14 +1,14 @@
 def encrypt(board,encoding)
-  #board.each {|line| puts line.join("  ")}
+  board.each {|line| puts line.join("  ")}
 
-board_hash = Hash.new{|h,k| h[k] = []}
+# board_hash = Hash.new{|h,k| h[k] = []}
 
-board.each_with_index do |subarr,i|
-  subarr.each do |word|
-    board_hash[word] << i
-  end
-end
-p board_hash
+# board.each_with_index do |subarr,i|
+#   subarr.each do |word|
+#     board_hash[word] << i
+#   end
+# end
+# p board_hash
 
 end
 
