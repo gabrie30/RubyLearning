@@ -1,22 +1,46 @@
-def talk
-  count = 0
-  until count == 3
-    print "You say: "
-    you_say = gets.strip
-    if you_say == "BYE"
-      count += 1
-      puts "Grandma responds: 'HUH?! No not since #{rand(1930..1950)}!"
-    elsif you_say == you_say.upcase && you_say != ""
-      puts "Grandma responds: 'HUH?! No not since #{rand(1930..1950)}!"
-      count = 0
-    else 
-      puts "Grandma responds: 'SPEAK UP GRAMMA CANT HEAR YOU!"
-      count = 0
+class Grandma
+
+  def initialize(name,count)
+    @name = name
+    @count = count
+  end
+
+  def done_talking?
+    if @count == 3
+      true
+    else
+      false
     end
   end
-  "SHUT THE DOOR ON YOUR WAY OUT DEAR!"
+
+    def count(you_ask)
+      if you_ask == "BYE"
+        @count += 1
+      else
+        @count = 0
+      end
+    end
+
+    def says(you_ask)
+      if you_ask == "BYE"
+        "#{@name} says: OH NO! Not since #{rand(1930..1950)}"
+      elsif you_ask == you_ask.upcase
+        "#{@name} says: OH NO! Not since #{rand(1930..1950)}"
+      else
+        "#{@name} says: WHAT?! SONNY SPEAKUP I CAN'T HEAR YOU!"
+      end
+    end
+
 end
 
+my_grandma = Grandma.new('Ginny',0)
 
-puts "What do you want to say to grandma? "
-puts talk
+puts "What do you want to say to Grandma? "
+until my_grandma.done_talking?
+  print "You say: " 
+  you_ask = gets.strip
+  my_grandma.count(you_ask)
+  puts my_grandma.says(you_ask)
+end
+
+puts "DON'T LET THE DOOR HIT YOU ON THE WAY OUT!"
