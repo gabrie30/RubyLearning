@@ -13,23 +13,23 @@ class Grandma
     end
   end
 
-    def count(you_ask)
-      if you_ask == "BYE"
-        @count += 1
-      else
-        @count = 0
-      end
+  def count(you_ask)
+    if you_ask == "BYE"
+      @count += 1
+    else
+      @count = 0
     end
+  end
 
-    def says(you_ask)
-      if you_ask == "BYE"
-        "#{@name} says: OH NO! Not since #{rand(1930..1950)}"
-      elsif you_ask == you_ask.upcase
-        "#{@name} says: OH NO! Not since #{rand(1930..1950)}"
-      else
-        "#{@name} says: WHAT?! SONNY SPEAKUP I CAN'T HEAR YOU!"
-      end
+  def says(you_ask)
+    if you_ask == "BYE"
+      "#{@name} says: OH NO! Not since #{rand(1930..1950)}"
+    elsif you_ask == you_ask.upcase && you_ask != ""
+      "#{@name} says: OH NO! Not since #{rand(1930..1950)}"
+    else
+      "#{@name} says: WHAT?! SONNY SPEAKUP I CAN'T HEAR YOU!"
     end
+  end
 
 end
 
