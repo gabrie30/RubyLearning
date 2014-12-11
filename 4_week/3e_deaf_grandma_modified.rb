@@ -7,11 +7,7 @@ class Grandma
   end
 
   def done_talking?
-    if @count == @deafness
-      true
-    else
-      false
-    end
+    @count == @deafness ? true : false
   end
 
   def count(you_ask)
