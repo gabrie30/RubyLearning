@@ -1,12 +1,13 @@
 class Grandma
 
-  def initialize(name,count)
+  def initialize(name, count=0, deafness=3)
     @name = name
     @count = count
+    @deafness = deafness
   end
 
   def done_talking?
-    if @count == 3
+    if @count == @deafness
       true
     else
       false
@@ -22,9 +23,7 @@ class Grandma
   end
 
   def says(you_ask)
-    if you_ask == "BYE"
-      "#{@name} says: OH NO! Not since #{rand(1930..1950)}"
-    elsif you_ask == you_ask.upcase && you_ask != ""
+    if you_ask != "BYE" && you_ask == you_ask.upcase && you_ask != ""
       "#{@name} says: OH NO! Not since #{rand(1930..1950)}"
     else
       "#{@name} says: WHAT?! SONNY SPEAKUP I CAN'T HEAR YOU!"
@@ -33,7 +32,7 @@ class Grandma
 
 end
 
-my_grandma = Grandma.new('Ginny',0)
+my_grandma = Grandma.new('Ginny')
 
 puts "What do you want to say to Grandma? "
 until my_grandma.done_talking?
