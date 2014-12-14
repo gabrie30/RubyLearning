@@ -1,3 +1,9 @@
+# Exercise1. Write a class called Dog, that has name as an instance variable and the following methods:
+# bark
+# eat
+# chase_cat
+#Write a method teach_trick which allows you to teach tricks to specific instances of the dog class:
+
 class Dog
   attr_reader :tricks
 
