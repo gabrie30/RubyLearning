@@ -5,4 +5,4 @@
 # But how many sentences are your evaluations returning?
 # Anyone care to make a method that will correctly evaluate the number of sentences?
 # And that might even correctly evaluate something like:
-# Drs. Smith and Jones (i.e. Mr. Frank’s doctors) both said, “Hurrah! A cure has been found!”
+# Drs. Smith and Jones (i.e. Mr. Frank’s doctors) both said, “Hurrah! A cure has been found!” 
