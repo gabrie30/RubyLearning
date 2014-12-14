@@ -1,4 +1,4 @@
-class Crazy < String
+class UnpredictableString < String
   def scramble
     ret_string = ""
     string = self.split("").shuffle
@@ -10,5 +10,5 @@ class Crazy < String
 end
 
 
-a = Crazy.new("hello there world")
+a = UnpredictableString.new("hello there world")
 p a.scramble
