@@ -49,7 +49,7 @@ The distribution of letters for this document. (* = 100)
   end
 end
 
-file = File.open(ARGV[0], "r")
+file = File.open("text.txt", "r")
 analyse1 = Analyzer.new(file)
 
 analyse1.letter_count
