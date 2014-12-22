@@ -1,38 +1,35 @@
 class Shape
-  def rotate
-    "The shape has been rotated"
+  def initialize(size,*location)
+    @size = size #area in inches
+    @location = location
   end
 
+  def rotate
+    "The shape has been rotated 360 degrees"
+  end
+ 
   def play_sound(file)
     file
   end
-
+ 
   def to_s
-    "I am a #{self.class}"
-  end
-end
-
-class Square < Shape
-  def play_sound
-    square_sound = "La La La I'm a square"
-    super(square_sound)
+    "I am a #{self.class} I have an area of #{@size} square inches, and a location on the coordinates #{@location}"
   end
 end
  
-
-class Triangle < Shape
-  def play_sound
-    triangle_sound = "Tra lala I'm a triangle"
-    super(triangle_sound)
-  end
+class Square < Shape
 end
-
-
-s = Square.new
+ 
+ 
+class Triangle < Shape
+end
+ 
+ 
+s = Square.new(25, 133, 150)
 puts s
 puts s.rotate
-puts s.play_sound
-t = Triangle.new
+puts s.play_sound("Song Playing: La La La I'm a square")
+t = Triangle.new(18, 125, 35)
 puts t
 puts t.rotate
-puts t.play_sound
+puts t.play_sound("Song Playing: Tra lala I'm a triangle")
